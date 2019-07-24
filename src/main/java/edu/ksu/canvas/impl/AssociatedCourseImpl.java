@@ -7,13 +7,15 @@ import edu.ksu.canvas.interfaces.AssociatedCourseWriter;
 import edu.ksu.canvas.interfaces.CanvasMessenger;
 import edu.ksu.canvas.interfaces.ResponseParser;
 import edu.ksu.canvas.model.AssociatedCourse;
+import edu.ksu.canvas.model.BlueprintMigration;
 import edu.ksu.canvas.model.Course;
 import edu.ksu.canvas.net.Response;
 import edu.ksu.canvas.net.RestClient;
         import edu.ksu.canvas.oauth.OauthToken;
         import edu.ksu.canvas.requestOptions.ListAssociatedCourseOptions;
+import edu.ksu.canvas.requestOptions.SynchronizeShellOptions;
 
-        import java.io.IOException;
+import java.io.IOException;
         import java.lang.reflect.Type;
         import java.util.List;
 import java.util.Locale;
@@ -25,7 +27,6 @@ public class AssociatedCourseImpl extends BaseImpl<AssociatedCourse, AssociatedC
         super(canvasBaseUrl, apiVersion, oauthToken, restClient, connectTimeout, readTimeout,
                 paginationPageSize, serializeNulls);
     }
-
     @Override
     public List<AssociatedCourse> listAssociatedCourses(ListAssociatedCourseOptions options) throws IOException {
         String url = buildCanvasUrl("/courses/"+options.getCourseId()+"/blueprint_templates/default/associated_courses",options.getOptionsMap());
@@ -38,10 +39,15 @@ public class AssociatedCourseImpl extends BaseImpl<AssociatedCourse, AssociatedC
         return responseParser.parseToObject(AssociatedCourse.class, response);
     }
     @Override
+    public Optional<BlueprintMigration> synchroniseShellsWithBlueprint(SynchronizeShellOptions options,JsonObject jsonObject) throws IOException {
+        String url = buildCanvasUrl("/courses/"+options.getCourseId()+"/blueprint_templates/default/migrations ",options.getOptionsMap());
+        Response response = canvasMessenger.sendJsonPostToCanvas(oauthToken,url,jsonObject);
+        return responseParser.parseToObject(BlueprintMigration.class, response);
+    }
+    @Override
     protected Type listType() {
         return new TypeToken<List<AssociatedCourse>>(){}.getType();
     }
-
     @Override
     protected Class<AssociatedCourse> objectType() {
         return AssociatedCourse.class;
