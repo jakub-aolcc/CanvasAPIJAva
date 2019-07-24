@@ -1,6 +1,7 @@
 package edu.ksu.canvas.interfaces;
 
 import edu.ksu.canvas.model.Course;
+import edu.ksu.canvas.requestOptions.ListAssociatedCourseOptions;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -16,7 +17,7 @@ public interface CourseWriter extends CanvasWriter<Course, CourseWriter> {
      Optional<Course> createCourse(String accountId, Course course) throws IOException;
 
 
-     Optional<Course> resetCourse(String courseId) throws IOException;
+     Optional<Course> resetCourse(String courseId, ListAssociatedCourseOptions options) throws IOException;
 
 
     /**

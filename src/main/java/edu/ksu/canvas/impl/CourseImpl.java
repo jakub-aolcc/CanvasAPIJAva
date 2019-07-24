@@ -8,10 +8,7 @@ import edu.ksu.canvas.model.status.Delete;
 import edu.ksu.canvas.net.Response;
 import edu.ksu.canvas.net.RestClient;
 import edu.ksu.canvas.oauth.OauthToken;
-import edu.ksu.canvas.requestOptions.GetSingleCourseOptions;
-import edu.ksu.canvas.requestOptions.ListActiveCoursesInAccountOptions;
-import edu.ksu.canvas.requestOptions.ListCurrentUserCoursesOptions;
-import edu.ksu.canvas.requestOptions.ListUserCoursesOptions;
+import edu.ksu.canvas.requestOptions.*;
 import org.apache.log4j.Logger;
 
 import java.io.IOException;
@@ -79,10 +76,10 @@ public class CourseImpl extends BaseImpl<Course, CourseReader, CourseWriter> imp
     }
 
     @Override
-    public Optional<Course> resetCourse(String courseId) throws IOException {
+    public Optional<Course> resetCourse(String courseId, ListAssociatedCourseOptions options) throws IOException {
         LOG.debug("Resetting Course.");
         String url = buildCanvasUrl("courses/"+courseId+"/reset_content",Collections.emptyMap());
-        Response response = canvasMessenger.getSingleResponseFromCanvas(oauthToken,url);
+        Response response = canvasMessenger.sendToCanvas(oauthToken,url, options.getOptionsMap());
         return responseParser.parseToObject(Course.class, response);
     }
 

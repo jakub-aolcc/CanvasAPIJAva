@@ -1,5 +1,7 @@
 package edu.ksu.canvas.requestOptions;
 
+import edu.ksu.canvas.model.AddingCourseIds;
+
 import java.util.List;
 
 public class ListAssociatedCourseOptions extends BaseOptions {
@@ -8,10 +10,7 @@ public class ListAssociatedCourseOptions extends BaseOptions {
     public ListAssociatedCourseOptions(String courseId) {
         this.courseId = courseId;
     }
-    public ListAssociatedCourseOptions includes(List<String> coursesToChange) {
-        addStringList("course_ids_to_add[]", coursesToChange);
-        return this;
-    }
+
     public String getCourseId() {
         return courseId;
     }

@@ -11,7 +11,9 @@ import java.util.Optional;
 
 public interface AssociatedCourseWriter extends CanvasWriter<AssociatedCourse, AssociatedCourseWriter> {
 
-    Optional<AssociatedCourse> updateAssociations(ListAssociatedCourseOptions options, JsonObject coursesToAdd) throws IOException;
+    Optional<AssociatedCourse> updateAssociations(ListAssociatedCourseOptions options, JsonObject obj) throws IOException;
 
     Optional<BlueprintMigration> synchroniseShellsWithBlueprint (SynchronizeShellOptions options,JsonObject jsonObject) throws IOException;
+
+
 }

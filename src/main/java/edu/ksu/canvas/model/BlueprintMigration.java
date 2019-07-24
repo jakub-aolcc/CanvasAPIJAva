@@ -1,8 +1,11 @@
 package edu.ksu.canvas.model;
 
+import edu.ksu.canvas.annotation.CanvasObject;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@CanvasObject(postKey = "blueprint_migrations")
 public class BlueprintMigration extends BaseCanvasModel implements Serializable {
     public static final long serialVersionUID = 1L;
 
@@ -16,6 +19,7 @@ public class BlueprintMigration extends BaseCanvasModel implements Serializable 
     private Date importsQueuedAt;
     private Date importsCompletedAt;
     private String comment;
+
 
     public Integer getId() {
         return id;
