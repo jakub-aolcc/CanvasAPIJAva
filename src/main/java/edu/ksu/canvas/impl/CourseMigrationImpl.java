@@ -36,9 +36,14 @@ public class CourseMigrationImpl extends BaseImpl<CourseMigration, CourseMigrati
         if(response.getErrorHappened() || response.getResponseCode() !=200){
             return Optional.empty();
         }
-        System.out.println(response.getResponseCode());
-        System.out.println(response.getContent());
         return responseParser.parseToObject(CourseMigration.class, response);
+    }
+
+    @Override
+    public Optional<CourseMigration> getCourseMigrationStatus(CourseMigrationOptions options) throws IOException {
+        String url = buildCanvasUrl("/courses/"+options.getCourseId()+"/content_migrations",options.getOptionsMap());
+        Response response = canvasMessenger.getSingleResponseFromCanvas(oauthToken,url);
+        return responseParser.parseToObject(CourseMigration.class,response);
     }
 
     @Override

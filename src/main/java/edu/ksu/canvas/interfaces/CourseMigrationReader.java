@@ -11,5 +11,5 @@ package edu.ksu.canvas.interfaces;
 
 public interface CourseMigrationReader extends CanvasReader<CourseMigration, CourseMigrationReader> {
 
-  // Optional<CourseMigration> courseMigration(CourseMigrationOptions options) throws IOException;
+        Optional<CourseMigration> getCourseMigrationStatus(CourseMigrationOptions options) throws IOException;
 }
