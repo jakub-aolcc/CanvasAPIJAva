@@ -3,6 +3,7 @@ package edu.ksu.canvas.impl;
 import com.google.gson.reflect.TypeToken;
 import edu.ksu.canvas.interfaces.CourseMigrationReader;
 import edu.ksu.canvas.interfaces.CourseMigrationWriter;
+import edu.ksu.canvas.model.ChangeRecord;
 import edu.ksu.canvas.model.Course;
 import edu.ksu.canvas.model.CourseMigration;
 import edu.ksu.canvas.net.Response;
@@ -45,6 +46,8 @@ public class CourseMigrationImpl extends BaseImpl<CourseMigration, CourseMigrati
         Response response = canvasMessenger.getSingleResponseFromCanvas(oauthToken,url);
         return responseParser.parseToObject(CourseMigration.class,response);
     }
+
+
 
     @Override
     protected Type listType() {
