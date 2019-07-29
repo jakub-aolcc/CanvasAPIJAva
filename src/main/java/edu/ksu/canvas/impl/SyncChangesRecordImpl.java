@@ -20,11 +20,11 @@ public class SyncChangesRecordImpl extends BaseImpl<ChangeRecord, SyncChangesRec
                     paginationPageSize, serializeNulls);
 }
 
-    @Override
-    public List<ChangeRecord> getUnsyncedChanges(CourseMigrationOptions options) throws IOException {
-        String url = buildCanvasUrl("/courses/" + options.getCourseId() + "/blueprint_templates/default/unsynced_changes", options.getOptionsMap());
-        return getListFromCanvas(url);
-    }
+//    @Override
+//    public List<ChangeRecord> getUnsyncedChanges(CourseMigrationOptions options) throws IOException {
+//        String url = buildCanvasUrl("/courses/" + options.getCourseId() + "/blueprint_templates/default/unsynced_changes", options.getOptionsMap());
+//        return getListFromCanvas(url);
+//    }
 
     @Override
     protected Type listType() {

@@ -75,6 +75,12 @@ public class CourseImpl extends BaseImpl<Course, CourseReader, CourseWriter> imp
         return responseParser.parseToObject(Course.class, response);
     }
 
+//    @Override
+//    public Optional<Course> updateCourseStatus(String accountId,UpdateCourseOptions options,Course){
+//        String url = buildCanvasUrl("accounts/"+accountId+"/courses",options.getOptionsMap());
+//        Response repsonse = canvasMessenger.putToCanvas(oauthToken,url,options.to);
+//    }
+
     @Override
     public Optional<Course> resetCourse(String courseId, ListAssociatedCourseOptions options) throws IOException {
         LOG.debug("Resetting Course.");
