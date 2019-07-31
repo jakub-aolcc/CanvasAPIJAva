@@ -1,7 +1,9 @@
 package edu.ksu.canvas.interfaces;
 
+import com.google.gson.JsonObject;
 import edu.ksu.canvas.model.Course;
 import edu.ksu.canvas.requestOptions.ListAssociatedCourseOptions;
+import edu.ksu.canvas.requestOptions.PublishOptions;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -19,7 +21,7 @@ public interface CourseWriter extends CanvasWriter<Course, CourseWriter> {
 
      Optional<Course> resetCourse(String courseId, ListAssociatedCourseOptions options) throws IOException;
 
-
+    Optional<Course> publishCourses(PublishOptions options, JsonObject obj) throws IOException;
     /**
       * Update a course in Canvas
       * @param course A course object containing the information needed to update a course in Canvas

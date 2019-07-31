@@ -1,5 +1,6 @@
 package edu.ksu.canvas.impl;
 
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import edu.ksu.canvas.interfaces.CourseReader;
 import edu.ksu.canvas.interfaces.CourseWriter;
@@ -75,11 +76,12 @@ public class CourseImpl extends BaseImpl<Course, CourseReader, CourseWriter> imp
         return responseParser.parseToObject(Course.class, response);
     }
 
-//    @Override
-//    public Optional<Course> updateCourseStatus(String accountId,UpdateCourseOptions options,Course){
-//        String url = buildCanvasUrl("accounts/"+accountId+"/courses",options.getOptionsMap());
-//        Response repsonse = canvasMessenger.putToCanvas(oauthToken,url,options.to);
-//    }
+    @Override
+    public Optional<Course> publishCourses(PublishOptions options, JsonObject obj ) throws IOException {
+        String url = buildCanvasUrl("/accounts/" + options.getAccountId() + "/courses", options.getOptionsMap());
+        Response response = canvasMessenger.sendJsonPutToCanvas(oauthToken, url, obj);
+        return responseParser.parseToObject(Course.class, response);
+    }
 
     @Override
     public Optional<Course> resetCourse(String courseId, ListAssociatedCourseOptions options) throws IOException {
