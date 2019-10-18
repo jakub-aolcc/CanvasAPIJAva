@@ -172,6 +172,7 @@ public class CanvasApiFactory {
         readerMap.put(ExternalToolReader.class, ExternalToolImpl.class);
         readerMap.put(LoginReader.class, LoginImpl.class);
         readerMap.put(CourseMigrationReader.class, CourseMigrationImpl.class);
+        readerMap.put(FileReader.class, FileImpl.class);
 
         writerMap.put(AssignmentOverrideWriter.class, AssignmentOverrideImpl.class);
         writerMap.put(AdminWriter.class, AdminImpl.class);
@@ -194,5 +195,6 @@ public class CanvasApiFactory {
         writerMap.put(LoginWriter.class, LoginImpl.class);
         writerMap.put(CourseMigrationWriter.class, CourseMigrationImpl.class);
         writerMap.put(AssociatedCourseWriter.class, AssociatedCourseImpl.class);
+
     }
 }

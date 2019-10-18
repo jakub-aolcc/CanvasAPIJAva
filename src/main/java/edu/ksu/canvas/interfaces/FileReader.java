@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface FileReader extends CanvasReader<File, FileReader> {
 
-    public List<File> getMatchingFiles(GetFilesOptions options) throws IOException;
+    List<File> getMatchingFiles(GetFilesOptions options) throws IOException;
 }
 

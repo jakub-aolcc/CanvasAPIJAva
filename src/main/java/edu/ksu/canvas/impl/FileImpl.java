@@ -23,7 +23,7 @@ public class FileImpl extends BaseImpl<File, FileReader, FileWriter> implements 
 
     @Override
     public List<File> getMatchingFiles(GetFilesOptions options) throws IOException {
-       String url = buildCanvasUrl("courses/"+options.getCourseId()+"/files?"+options.getSearchTerm(), options.getOptionsMap());
+       String url = buildCanvasUrl("courses/"+options.getCourseId()+"/files?search_term="+options.getSearchTerm(), options.getOptionsMap());
         return getListFromCanvas(url);
     }
 
