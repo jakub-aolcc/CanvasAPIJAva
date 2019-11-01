@@ -54,7 +54,7 @@ public abstract class BaseCanvasModel {
      * must look like: <pre>{assignment: {name: "Assignment 1"}}</pre>.
      * This method adds the outer "assignment" container based on CanvasObject notations on the model classes
      * @param serializeNulls Whether or not to include null fields in the serialized JSON. Defaults to false if null
-     * @return A JsonObject suitable for serializing out to the Canvas API
+     *      * @return A JsonObject suitable for serializing out to the Canvas API
      */
     public JsonObject toJsonObject(Boolean serializeNulls) {
         Class<? extends BaseCanvasModel> clazz = this.getClass();

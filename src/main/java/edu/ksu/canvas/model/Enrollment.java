@@ -157,6 +157,7 @@ public class Enrollment extends BaseCanvasModel implements Serializable {
         this.userId = userId;
     }
 
+    @CanvasField(postKey = "associated_user_id")
     public Integer getAssociatedUserId() {
         return associatedUserId;
     }

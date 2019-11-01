@@ -1,6 +1,8 @@
 package edu.ksu.canvas.interfaces;
 
+import com.google.gson.JsonObject;
 import edu.ksu.canvas.model.Enrollment;
+import edu.ksu.canvas.requestOptions.ObserveeEnrollmentOptions;
 import edu.ksu.canvas.requestOptions.UnEnrollOptions;
 
 import java.io.IOException;
@@ -63,4 +65,5 @@ public interface EnrollmentWriter extends CanvasWriter<Enrollment, EnrollmentWri
       * @throws IOException if there is an error communicating with Canvas
       */
      Optional<Enrollment> dropUser(String courseId, String enrollmentId) throws IOException;
+
 }

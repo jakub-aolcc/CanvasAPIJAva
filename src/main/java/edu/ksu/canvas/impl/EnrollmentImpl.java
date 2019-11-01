@@ -1,5 +1,6 @@
 package edu.ksu.canvas.impl;
 
+import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 
 import edu.ksu.canvas.interfaces.CourseReader;
@@ -11,6 +12,7 @@ import edu.ksu.canvas.net.RestClient;
 import edu.ksu.canvas.oauth.OauthToken;
 import edu.ksu.canvas.requestOptions.GetEnrollmentOptions;
 
+import edu.ksu.canvas.requestOptions.ObserveeEnrollmentOptions;
 import edu.ksu.canvas.requestOptions.UnEnrollOptions;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
@@ -70,6 +72,7 @@ public class EnrollmentImpl extends BaseImpl<Enrollment, EnrollmentReader, Enrol
         LOG.debug(String.format("Enrolling user %s in course %d", enrollment.getUserId(), enrollment.getCourseId()));
         return enrollUser(enrollment, false);
     }
+
 
     @Override
     public Optional<Enrollment> enrollUserInSection(Enrollment enrollment) throws IOException {

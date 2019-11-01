@@ -1,11 +1,14 @@
 package edu.ksu.canvas.interfaces;
 
 import com.google.gson.JsonObject;
+import edu.ksu.canvas.enums.CourseEvents;
 import edu.ksu.canvas.model.Course;
 import edu.ksu.canvas.requestOptions.ListAssociatedCourseOptions;
 import edu.ksu.canvas.requestOptions.PublishOptions;
+import edu.ksu.canvas.requestOptions.UpdateCourseOptions;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 
 public interface CourseWriter extends CanvasWriter<Course, CourseWriter> {
@@ -28,7 +31,7 @@ public interface CourseWriter extends CanvasWriter<Course, CourseWriter> {
       * @return The newly updated course
       * @throws IOException When there is an error communicating with Canvas
       */
-      Optional<Course> updateCourse(Course course) throws IOException;
+      Optional<Course> updateCourse(Course course, List<CourseEvents> courseList) throws IOException;
 
     /**
      * @param courseId The ID of the course you wish to delete

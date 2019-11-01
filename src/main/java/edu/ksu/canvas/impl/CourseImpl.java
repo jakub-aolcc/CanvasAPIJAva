@@ -1,7 +1,9 @@
 package edu.ksu.canvas.impl;
 
+import com.google.common.collect.ImmutableMap;
 import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
+import edu.ksu.canvas.enums.CourseEvents;
 import edu.ksu.canvas.interfaces.CourseReader;
 import edu.ksu.canvas.interfaces.CourseWriter;
 import edu.ksu.canvas.model.Course;
@@ -19,6 +21,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 
 public class CourseImpl extends BaseImpl<Course, CourseReader, CourseWriter> implements CourseReader, CourseWriter {
@@ -69,9 +72,12 @@ public class CourseImpl extends BaseImpl<Course, CourseReader, CourseWriter> imp
     }
 
     @Override
-    public Optional<Course> updateCourse(Course course) throws IOException {
+    public Optional<Course> updateCourse(Course course, List<CourseEvents> courseEvents) throws IOException {
         LOG.debug("updating course");
-        String url = buildCanvasUrl("courses/" + course.getId(), Collections.emptyMap());
+        ImmutableMap<String, List<String>> parameters = ImmutableMap.<String,List<String>>builder()
+                .put("course[event]", courseEvents.stream().map(Enum::toString).collect(Collectors.toList()))
+                .build();
+        String url = buildCanvasUrl("courses/" + course.getId(), parameters);
         Response response = canvasMessenger.sendJsonPutToCanvas(oauthToken, url, course.toJsonObject(serializeNulls));
         return responseParser.parseToObject(Course.class, response);
     }
