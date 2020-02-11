@@ -34,6 +34,13 @@ public interface CourseWriter extends CanvasWriter<Course, CourseWriter> {
       Optional<Course> updateCourse(Course course, List<CourseEvents> courseList) throws IOException;
 
     /**
+     * Update single course (Why is this different? - Jakub)
+     * @param course
+     * @return
+     * @throws IOException
+     */
+      Optional<Course> updateSingleCourse(Course course) throws  IOException;
+    /**
      * @param courseId The ID of the course you wish to delete
      * @return true if the course was deleted
      * @throws IOException When there is an error communicating with Canvas

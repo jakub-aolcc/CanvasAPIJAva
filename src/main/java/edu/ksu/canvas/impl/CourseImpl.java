@@ -72,6 +72,14 @@ public class CourseImpl extends BaseImpl<Course, CourseReader, CourseWriter> imp
     }
 
     @Override
+    public Optional<Course> updateSingleCourse(Course course) throws IOException {
+        LOG.debug("updating course");
+        String url = buildCanvasUrl("courses/" + course.getId(), Collections.emptyMap());
+        Response response = canvasMessenger.sendJsonPutToCanvas(oauthToken, url, course.toJsonObject(serializeNulls));
+        return responseParser.parseToObject(Course.class, response);
+    }
+
+    @Override
     public Optional<Course> updateCourse(Course course, List<CourseEvents> courseEvents) throws IOException {
         LOG.debug("updating course");
         ImmutableMap<String, List<String>> parameters = ImmutableMap.<String,List<String>>builder()

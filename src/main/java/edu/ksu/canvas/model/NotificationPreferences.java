@@ -1,9 +1,7 @@
 package edu.ksu.canvas.model;
 
-import com.sun.tools.javac.api.DiagnosticFormatter;
 import edu.ksu.canvas.annotation.CanvasField;
 import edu.ksu.canvas.annotation.CanvasObject;
-
 import java.io.Serializable;
 
 @CanvasObject(postKey = "notification_preferences")
