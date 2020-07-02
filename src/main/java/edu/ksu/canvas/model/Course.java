@@ -52,6 +52,7 @@ public class Course extends BaseCanvasModel implements Serializable {
 	private String courseFormat;
 	private Boolean enableSisReactivation;
 	private Boolean blueprint;
+	private String event;
 
 	private BlueprintRestrictions blueprintRestrictions;
 	private List<Section> sections;
@@ -415,5 +416,13 @@ public class Course extends BaseCanvasModel implements Serializable {
 
 	public void setBlueprintRestrictions(BlueprintRestrictions blueprintRestrictions) {
 		this.blueprintRestrictions = blueprintRestrictions;
+	}
+	@CanvasField(postKey = "event")
+	public String getEvent() {
+		return event;
+	}
+
+	public void setEvent(String event) {
+		this.event = event;
 	}
 }
