@@ -8,5 +8,6 @@ import java.util.Optional;
 
 public interface NotificationPreferencesWriter extends CanvasWriter<NotificationPreferences,NotificationPreferencesWriter> {
 
+    Optional<NotificationPreferences> updateAPreferenceCategory(NotificationPreferences notificationPreferences, NotificationPreferencesOptions options) throws IOException;
     Optional<NotificationPreferences> updateAPreference(NotificationPreferences notificationPreferences, NotificationPreferencesOptions options) throws IOException;
 }

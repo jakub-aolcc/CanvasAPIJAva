@@ -4,11 +4,21 @@ public class NotificationPreferencesOptions extends BaseOptions{
     public String CommunicationChannelId;
     public String userId;
     public String notification;
+    public String notificationCategory;
 
-    public NotificationPreferencesOptions(String communicationChannelId,String userId,String notification){
+    public NotificationPreferencesOptions(String communicationChannelId,String userId,String notification, String notificationCategory){
         this.notification = notification;
         this.userId = userId;
         this.CommunicationChannelId = communicationChannelId;
+        this.notificationCategory = notificationCategory;
+    }
+
+    public String getNotificationCategory() {
+        return notificationCategory;
+    }
+
+    public void setNotificationCategory(String notificationCategory) {
+        this.notificationCategory = notificationCategory;
     }
 
     public String getNotification() {
