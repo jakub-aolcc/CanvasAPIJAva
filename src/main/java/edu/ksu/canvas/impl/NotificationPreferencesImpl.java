@@ -29,6 +29,13 @@ public class NotificationPreferencesImpl extends BaseImpl<NotificationPreference
     }
 
     @Override
+    public Optional<NotificationPreferences> updateAPreferenceCategory(NotificationPreferences notificationPreferences, NotificationPreferencesOptions options) throws IOException {
+        String createdUrl = buildCanvasUrl("users/self/communication_channels/"+options.CommunicationChannelId+"/notification_preference_categories/"+options.notificationCategory, options.getOptionsMap());
+        Response response = canvasMessenger.putToCanvas(oauthToken,createdUrl,notificationPreferences.toPostMap());
+        return Optional.empty();
+    }
+
+    @Override
     public Optional<NotificationPreferences> updateAPreference(NotificationPreferences notificationPreferences, NotificationPreferencesOptions options) throws IOException {
         String createdUrl = buildCanvasUrl("users/self/communication_channels/"+options.CommunicationChannelId+"/notification_preferences/"+options.notification, options.getOptionsMap());
         Response response = canvasMessenger.putToCanvas(oauthToken,createdUrl,notificationPreferences.toPostMap());
