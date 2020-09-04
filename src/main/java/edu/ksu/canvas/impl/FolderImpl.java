@@ -38,7 +38,7 @@ public class FolderImpl extends BaseImpl<Folder, FolderReader, FolderWriter> imp
     }
     @Override
     public List<Folder> getFoldersByPath(GetFoldersOptions options) throws IOException {
-        String url = buildCanvasUrl("courses/"+options.getCourseId()+"folder/by_path/"+options.getFolderPath(),options.getOptionsMap());
+        String url = buildCanvasUrl("courses/"+options.getCourseId()+"/folders/by_path/"+options.getFolderPath(),options.getOptionsMap());
         return  getListFromCanvas(url);
     }
 
