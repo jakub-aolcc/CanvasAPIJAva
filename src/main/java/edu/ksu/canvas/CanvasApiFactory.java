@@ -192,7 +192,6 @@ public class CanvasApiFactory {
         writerMap.put(SectionWriter.class, SectionsImpl.class);
         writerMap.put(UserWriter.class, UserImpl.class);
         writerMap.put(PageWriter.class, PageImpl.class);
-        writerMap.put(SectionWriter.class, SectionsImpl.class);
         writerMap.put(SubmissionWriter.class, SubmissionImpl.class);
         writerMap.put(AssignmentGroupWriter.class, AssignmentGroupImpl.class);
         writerMap.put(RoleWriter.class, RoleImpl.class);

@@ -42,8 +42,6 @@ public class NotificationPreferencesImpl extends BaseImpl<NotificationPreference
         return Optional.empty();
     }
 
-
-
     @Override
     public List<NotificationPreferences> getSinglePreference(NotificationPreferencesOptions notificationPreferencesOptions) throws IOException {
         String createdUrl = buildCanvasUrl("/users/"+notificationPreferencesOptions.getUserId()+"/communication_channels/"+notificationPreferencesOptions.getCommunicationChannelId()+"/notification_preferences/"+notificationPreferencesOptions.getNotification(),notificationPreferencesOptions.getOptionsMap());

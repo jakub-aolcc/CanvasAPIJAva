@@ -11,6 +11,7 @@ import edu.ksu.canvas.net.Response;
 import edu.ksu.canvas.net.RestClient;
 import edu.ksu.canvas.oauth.OauthToken;
 import edu.ksu.canvas.requestOptions.GetFilesOptions;
+import edu.ksu.canvas.requestOptions.GetSingleFileOptions;
 import edu.ksu.canvas.requestOptions.UpdateFilesOptions;
 
 import java.io.IOException;
@@ -44,6 +45,11 @@ public class FileImpl extends BaseImpl<File, FileReader, FileWriter> implements 
     public List<File> getAllFiles(GetFilesOptions options) throws IOException {
         String url = buildCanvasUrl("courses/"+options.getCourseId()+"/files",options.getOptionsMap());
         return getListFromCanvas(url);
+    }
+    @Override
+    public Optional<File> getFile(GetSingleFileOptions options) throws IOException {
+        String url = buildCanvasUrl("files/"+options.getFileId(),options.getOptionsMap());
+        return getFromCanvas(url);
     }
 
 
