@@ -6,11 +6,13 @@ import edu.ksu.canvas.interfaces.CourseMigrationWriter;
 import edu.ksu.canvas.model.ChangeRecord;
 import edu.ksu.canvas.model.Course;
 import edu.ksu.canvas.model.CourseMigration;
+import edu.ksu.canvas.model.SelectiveImport;
 import edu.ksu.canvas.net.Response;
 import edu.ksu.canvas.net.RestClient;
 import edu.ksu.canvas.oauth.OauthToken;
 import edu.ksu.canvas.requestOptions.CourseMigrationOptions;
 import edu.ksu.canvas.requestOptions.ListAssociatedCourseOptions;
+import edu.ksu.canvas.requestOptions.SelectiveImportItemsOptions;
 
 import java.io.IOException;
 import java.lang.reflect.Type;
@@ -28,7 +30,7 @@ public class CourseMigrationImpl extends BaseImpl<CourseMigration, CourseMigrati
 
     @Override
     public Optional<CourseMigration> createCourseMigration(CourseMigrationOptions options) throws IOException {
-        String url = buildCanvasUrl("/courses/"+options.getCourseId()+"/content_migrations?migration_type="+options.getMigrationType()+"&settings[source_course_id]="+options.getSourceCourseId(),options.getOptionsMap());
+        String url = buildCanvasUrl("/courses/"+options.getCourseId()+"/content_migrations?migration_type="+options.getMigrationType()+"&settings[source_course_id]="+options.getSourceCourseId()+"&selective_import="+options.getSelectiveImport(),options.getOptionsMap());
         System.out.println(url);
         return copyCourseFromSource(oauthToken,url,options);
     }
@@ -46,7 +48,6 @@ public class CourseMigrationImpl extends BaseImpl<CourseMigration, CourseMigrati
         Response response = canvasMessenger.getSingleResponseFromCanvas(oauthToken,url);
         return responseParser.parseToObject(CourseMigration.class,response);
     }
-
 
 
     @Override

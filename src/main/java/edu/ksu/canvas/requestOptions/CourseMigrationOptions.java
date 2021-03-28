@@ -1,5 +1,7 @@
 package edu.ksu.canvas.requestOptions;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import java.util.List;
 
 public class CourseMigrationOptions extends BaseOptions {
@@ -8,11 +10,17 @@ public class CourseMigrationOptions extends BaseOptions {
     private String courseId;
     private String migrationType;
     private String sourceCourseId;
+    private Boolean selectiveImport;
 
-    public CourseMigrationOptions(String courseId, String migrationType, String sourceCourseId) {
+    public CourseMigrationOptions(String courseId, String migrationType, String sourceCourseId, Boolean selectiveImport) {
         this.courseId = courseId;
         this.migrationType = migrationType;
         this.sourceCourseId = sourceCourseId;
+        this.selectiveImport = selectiveImport;
+    }
+
+    public Boolean getSelectiveImport() {
+        return selectiveImport;
     }
 
     public String getCourseId() {
