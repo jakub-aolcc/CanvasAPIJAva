@@ -6,6 +6,7 @@ import edu.ksu.canvas.model.AssociatedCourse;
 import edu.ksu.canvas.model.CommunicationChannel;
 import edu.ksu.canvas.model.CourseMigration;
 import edu.ksu.canvas.model.NotificationPreferences;
+import edu.ksu.canvas.model.module.Module;
 import edu.ksu.canvas.net.RestClient;
 import edu.ksu.canvas.net.RefreshingRestClient;
 import edu.ksu.canvas.oauth.OauthToken;
@@ -179,6 +180,8 @@ public class CanvasApiFactory {
         readerMap.put(CommunicationChannelReader.class,CommunicationChannelImpl.class);
         readerMap.put(FolderReader.class,FolderImpl.class);
         readerMap.put(SelectiveImportItemsReader.class,SelectiveImportImpl.class);
+        readerMap.put(ModuleReader.class, ModuleImpl.class);
+        readerMap.put(ItemsReader.class,ItemsImpl.class);
 
         writerMap.put(AssignmentOverrideWriter.class, AssignmentOverrideImpl.class);
         writerMap.put(AdminWriter.class, AdminImpl.class);
@@ -205,6 +208,8 @@ public class CanvasApiFactory {
         writerMap.put(FolderWriter.class,FolderImpl.class);
         writerMap.put(FileWriter.class,FileImpl.class);
         writerMap.put(SelectiveImportItemsWriter.class,SelectiveImportImpl.class);
+        writerMap.put(ModuleWriter.class,ModuleImpl.class);
+        writerMap.put(ItemsWriter.class,ItemsImpl.class);
 
     }
 }

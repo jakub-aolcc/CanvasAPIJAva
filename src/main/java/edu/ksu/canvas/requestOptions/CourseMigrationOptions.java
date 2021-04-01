@@ -1,7 +1,5 @@
 package edu.ksu.canvas.requestOptions;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
-
 import java.util.List;
 
 public class CourseMigrationOptions extends BaseOptions {
