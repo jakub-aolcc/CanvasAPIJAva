@@ -7,12 +7,14 @@ import edu.ksu.canvas.interfaces.FileReader;
 import edu.ksu.canvas.interfaces.FileWriter;
 import edu.ksu.canvas.interfaces.ResponseParser;
 import edu.ksu.canvas.model.File;
+import edu.ksu.canvas.model.coursemigration.PreAttachment;
 import edu.ksu.canvas.net.Response;
 import edu.ksu.canvas.net.RestClient;
 import edu.ksu.canvas.oauth.OauthToken;
 import edu.ksu.canvas.requestOptions.GetFilesOptions;
 import edu.ksu.canvas.requestOptions.GetSingleFileOptions;
 import edu.ksu.canvas.requestOptions.UpdateFilesOptions;
+import edu.ksu.canvas.requestOptions.UploadFileOptions;
 
 import java.io.IOException;
 import java.io.IOException;
@@ -51,6 +53,14 @@ public class FileImpl extends BaseImpl<File, FileReader, FileWriter> implements 
         String url = buildCanvasUrl("files/"+options.getFileId(),options.getOptionsMap());
         return getFromCanvas(url);
     }
+
+    @Override
+    public Optional<PreAttachment> uploadFile(UploadFileOptions options, OauthToken oauthToken) throws IOException {
+        String url = buildCanvasUrl("folders/"+options.getFolderId()+"/files?name="+options.getName()+"&parent_folder_id="+options.getFolderId()+"&on_duplicate="+options.getOn_duplicate()+"&content_type="+options.getContent_type(),options.getOptionsMap());
+        Response response = canvasMessenger.sendToCanvas(oauthToken,url,Collections.emptyMap());
+        return responseParser.parseToObject(PreAttachment.class,response);
+    }
+
 
 
     @Override

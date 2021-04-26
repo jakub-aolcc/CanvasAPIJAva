@@ -1,7 +1,11 @@
 package edu.ksu.canvas.model;
 
+import edu.ksu.canvas.annotation.CanvasObject;
+import edu.ksu.canvas.model.coursemigration.PreAttachment;
+
 import java.io.Serializable;
 
+@CanvasObject(postKey = "files")
 public class File extends BaseCanvasModel implements Serializable {
 
     private int id;
@@ -24,6 +28,15 @@ public class File extends BaseCanvasModel implements Serializable {
     private String mimeClass;
     private String mediaEntryId;
     private boolean lockedForUser;
+    private PreAttachment pre_attachment;
+
+    public PreAttachment getPre_attachment() {
+        return pre_attachment;
+    }
+
+    public void setPre_attachment(PreAttachment pre_attachment) {
+        this.pre_attachment = pre_attachment;
+    }
 
     public int getId() {
         return id;

@@ -2,6 +2,7 @@ package edu.ksu.canvas.interfaces;
 
 import edu.ksu.canvas.model.AssociatedCourse;
 import edu.ksu.canvas.model.CourseMigration;
+import edu.ksu.canvas.oauth.OauthToken;
 import edu.ksu.canvas.requestOptions.CourseMigrationOptions;
 import edu.ksu.canvas.requestOptions.ListAssociatedCourseOptions;
 

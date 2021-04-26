@@ -2,6 +2,7 @@ package edu.ksu.canvas.model;
 
 import edu.ksu.canvas.annotation.CanvasField;
 import edu.ksu.canvas.annotation.CanvasObject;
+import edu.ksu.canvas.model.coursemigration.PreAttachment;
 
 import java.io.Serializable;
 
@@ -16,6 +17,7 @@ public class CourseMigration extends BaseCanvasModel implements Serializable {
     private String created_at;
     private String migration_issues_url;
     private String migration_issues_count;
+    private PreAttachment pre_attachment;
     private Settings settings;
     private String progress_url;
     private String migration_type_title;
@@ -114,5 +116,13 @@ public class CourseMigration extends BaseCanvasModel implements Serializable {
 
     public void setMigration_type_title(String migration_type_title) {
         this.migration_type_title = migration_type_title;
+    }
+
+    public PreAttachment getPre_attachment() {
+        return pre_attachment;
+    }
+
+    public void setPre_attachment(PreAttachment pre_attachment) {
+        this.pre_attachment = pre_attachment;
     }
 }
